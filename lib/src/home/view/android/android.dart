@@ -5,7 +5,7 @@ import 'package:mvc_template/src/controller.dart';
 class MyAndroid extends StateMVC<MyHome> {
   //
   MyAndroid() : super(Controller()){
-    con = Controller();
+    con = controller;
   }
   Controller con;
 
