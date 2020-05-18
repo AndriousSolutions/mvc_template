@@ -4,7 +4,7 @@ import 'package:mvc_template/src/controller.dart';
 
 class MyiOS extends StateMVC<MyHome> {
   //
-  MyiOS() : super(Controller()){
+  MyiOS() : super(Controller()) {
     con = Controller();
   }
   Controller con;
@@ -22,7 +22,6 @@ class MyiOS extends StateMVC<MyHome> {
 
   /// The View component of this MVC design pattern!
   Widget build(BuildContext context) => Container(width: 0.0, height: 0.0);
-
 
   @override
   void dispose() {

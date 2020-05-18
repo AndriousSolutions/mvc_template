@@ -1,4 +1,3 @@
-
 import 'package:mvc_template/src/view.dart';
 
 import 'package:mvc_template/src/controller.dart';

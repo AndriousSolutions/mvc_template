@@ -1,5 +1,3 @@
-
-
 import 'package:mvc_template/src/view.dart';
 
 class MyHome extends StatefulWidget {

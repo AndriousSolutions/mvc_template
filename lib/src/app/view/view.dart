@@ -1,5 +1,3 @@
-
-
 import 'package:mvc_template/src/view.dart';
 
 import 'package:mvc_template/src/controller.dart';
@@ -11,48 +9,49 @@ class MyView extends AppView {
   ///
   /// Any remaining parameters deals with the interface highlighting UI while debugging
   /// as well as error handling.
-  MyView() : super(
-    key: null,
-    home: MyHome(),
-    con: null,
-    controllers: null,
-    object: null,
-    navigatorKey: null,
-    routes: null,
-    initialRoute: null,
-    onGenerateRoute: null,
-    onUnknownRoute: null,
-    navigatorObservers: null,
-    builder: null,
-    title: 'MVC App Template',
-    onGenerateTitle: null,
-    theme: null,
-    darkTheme: null,
-    themeMode: null,
-    color: null,
-    locale: null,
-    localizationsDelegates: null,
-    localeResolutionCallback: null,
-    supportedLocales: null,
-    useMaterial: null,
-    useCupertino: null,
-    switchUI: null,
-    debugShowMaterialGrid: null,
-    showPerformanceOverlay: null,
-    checkerboardRasterCacheImages: null,
-    checkerboardOffscreenLayers: null,
-    showSemanticsDebugger: null,
-    debugShowCheckedModeBanner: false,
-    debugShowWidgetInspector: null,
-    debugPaintSizeEnabled: null,
-    debugPaintBaselinesEnabled: null,
-    debugPaintPointersEnabled: null,
-    debugPaintLayerBordersEnabled: null,
-    debugRepaintRainbowEnabled: null,
-    errorHandler: null,
-    errorScreen: null,
-    reportError: null,
-  );
+  MyView()
+      : super(
+          key: null,
+          home: MyHome(),
+          con: null,
+          controllers: null,
+          object: null,
+          navigatorKey: null,
+          routes: null,
+          initialRoute: null,
+          onGenerateRoute: null,
+          onUnknownRoute: null,
+          navigatorObservers: null,
+          builder: null,
+          title: 'MVC App Template',
+          onGenerateTitle: null,
+          theme: null,
+          darkTheme: null,
+          themeMode: null,
+          color: null,
+          locale: null,
+          localizationsDelegates: null,
+          localeResolutionCallback: null,
+          supportedLocales: null,
+          useMaterial: null,
+          useCupertino: null,
+          switchUI: null,
+          debugShowMaterialGrid: null,
+          showPerformanceOverlay: null,
+          checkerboardRasterCacheImages: null,
+          checkerboardOffscreenLayers: null,
+          showSemanticsDebugger: null,
+          debugShowCheckedModeBanner: false,
+          debugShowWidgetInspector: null,
+          debugPaintSizeEnabled: null,
+          debugPaintBaselinesEnabled: null,
+          debugPaintPointersEnabled: null,
+          debugPaintLayerBordersEnabled: null,
+          debugRepaintRainbowEnabled: null,
+          errorHandler: null,
+          errorScreen: null,
+          reportError: null,
+        );
 
   /// Clean things up when your app terminates.
   ///
@@ -79,8 +78,8 @@ class MyView extends AppView {
   ///
   @override
   ThemeData onTheme() => ThemeData(
-    primarySwatch: App.colorTheme,
-  );
+        primarySwatch: App.colorTheme,
+      );
 
   /// Override if you like to customize error handling.
   ///

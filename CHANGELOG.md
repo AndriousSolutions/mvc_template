@@ -1,3 +1,8 @@
+## 2.0.0
+ May 18, 2020
+- New framework release: mvc_application: ^5.0.0
+- Add mvc_template.zip to git
+
 ## 1.0.0
  May 06, 2020
 - Initial Release

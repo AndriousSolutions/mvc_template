@@ -4,7 +4,7 @@ import 'package:mvc_template/src/controller.dart';
 
 class MyAndroid extends StateMVC<MyHome> {
   //
-  MyAndroid() : super(Controller()){
+  MyAndroid() : super(Controller()) {
     con = controller;
   }
   Controller con;
@@ -21,7 +21,7 @@ class MyAndroid extends StateMVC<MyHome> {
   }
 
   /// The View component of this MVC design pattern!
-  /// 
+  ///
   Widget build(BuildContext context) => Container(width: 0.0, height: 0.0);
 
   @override

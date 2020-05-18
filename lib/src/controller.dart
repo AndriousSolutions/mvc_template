@@ -1,6 +1,6 @@
-
 export 'package:mvc_application/controller.dart'
-    show App, AppController, AppDrawer, ControllerMVC, runApp hide HandleError;
+    show App, AppConMVC, AppController, AppDrawer, ControllerMVC, runApp
+    hide HandleError;
 
 export 'package:mvc_application/settings.dart' show AppSettings, Prefs;
 
