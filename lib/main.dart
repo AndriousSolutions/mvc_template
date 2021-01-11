@@ -20,12 +20,18 @@
 ///          Created  21 Apr 2020
 ///
 
-import 'package:mvc_template/src/view.dart' show App, MyView, runApp;
+import 'package:mvc_template/src/view.dart'
+    show AppStatefulWidget, MyView, runApp;
 
 /// We use the MVC framework's own runApp with its innate error handling.
-void main() => runApp(MyApp());
+void main() => runApp(
+      MyApp(),
+      errorHandler: null,
+      errorScreen: null,
+      errorReport: null,
+    );
 
-class MyApp extends App {
+class MyApp extends AppStatefulWidget {
   /// Note, all the parameters available to you are passed null
   /// just so you see that they exist.
   MyApp()
@@ -35,7 +41,8 @@ class MyApp extends App {
           loadingScreen: null,
           errorHandler: null,
           errorScreen: null,
-          reportError: null,
+          errorReport: null,
+          allowNewHandlers: true,
         );
 
   /// Following the MVC architecture, your app begins with a View.

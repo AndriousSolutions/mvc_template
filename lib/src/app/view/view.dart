@@ -1,8 +1,28 @@
+///
+/// Copyright (C) 2020 Andrious Solutions
+///
+/// This program is free software; you can redistribute it and/or
+/// modify it under the terms of the GNU General Public License
+/// as published by the Free Software Foundation; either version 3
+/// of the License, or any later version.
+///
+/// You may obtain a copy of the License at
+///
+///  http://www.apache.org/licenses/LICENSE-2.0
+///
+///
+/// Unless required by applicable law or agreed to in writing, software
+/// distributed under the License is distributed on an "AS IS" BASIS,
+/// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+/// See the License for the specific language governing permissions and
+/// limitations under the License.
+///
+///          Created  21 Apr 2020
+///
+
 import 'package:mvc_template/src/view.dart';
 
-import 'package:mvc_template/src/controller.dart';
-
-class MyView extends AppView {
+class MyView extends AppState {
   /// All the available parameters are passed null merely to present them to you.
   /// In practice, you would not do this, but have only the parameters you would
   /// normally use with the MaterialApp widget or CupertinoApp widget.
@@ -50,22 +70,18 @@ class MyView extends AppView {
           debugRepaintRainbowEnabled: null,
           errorHandler: null,
           errorScreen: null,
-          reportError: null,
+          errorReport: null,
         );
 
   /// Clean things up when your app terminates.
   ///
   @override
-  void dispose() {
-    super.dispose();
-  }
+  void dispose() => super.dispose();
 
   /// During development, if a hot reload occurs, the reassemble method is called.
   ///
   @override
-  void reassemble() {
-    super.reassemble();
-  }
+  void reassemble() => super.reassemble();
 
   /// Default visual properties, like colors fonts and shapes, for this app's
   /// material widgets.
@@ -77,16 +93,12 @@ class MyView extends AppView {
   /// The default value of this property is the value of [ThemeData.light()].
   ///
   @override
-  ThemeData onTheme() => ThemeData(
-        primarySwatch: App.colorTheme,
-      );
+  ThemeData onTheme() => super.onTheme();
 
   /// Override if you like to customize error handling.
   ///
   @override
-  void onError(FlutterErrorDetails details) {
-    super.onError(details);
-  }
+  void onError(FlutterErrorDetails details) => super.onError(details);
 
   /// The application's top-level routing table.
   ///

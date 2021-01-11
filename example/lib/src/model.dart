@@ -1,15 +1,11 @@
 ///
-/// Copyright (C) 2020 Andrious Solutions
+/// Copyright (C) 2021 Andrious Solutions Ltd.
 ///
-/// This program is free software; you can redistribute it and/or
-/// modify it under the terms of the GNU General Public License
-/// as published by the Free Software Foundation; either version 3
-/// of the License, or any later version.
-///
+/// Licensed under the Apache License, Version 2.0 (the "License");
+/// you may not use this file except in compliance with the License.
 /// You may obtain a copy of the License at
 ///
-///  http://www.apache.org/licenses/LICENSE-2.0
-///
+/// http://www.apache.org/licenses/LICENSE-2.0
 ///
 /// Unless required by applicable law or agreed to in writing, software
 /// distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,9 +13,11 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-///          Created  21 Apr 2020
+///          Created  01 Jan 2021
 ///
 
+// The MVC application framework.
 export 'package:mvc_application/model.dart';
 
-export 'package:mvc_template/src/home/model/model.dart';
+// The data for the home screen.
+export 'package:starter_app/src/home/model.dart';
