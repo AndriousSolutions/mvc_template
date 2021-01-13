@@ -16,9 +16,7 @@
 ///          Created  01 Jan 2021
 ///
 
-export 'package:starter_app/src/app/view/app_statefulwidget.dart';
-
-export 'package:starter_app/src/app/view/app_state.dart';
+export 'package:starter_app/src/app/view/app.dart';
 
 export 'package:starter_app/src/app/view/menu/app_menu.dart';
 

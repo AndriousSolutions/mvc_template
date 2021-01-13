@@ -1,3 +1,7 @@
+## 3.0.0+2
+ January 13, 2021
+- Enhanced example app 1.1.0
+
 ## 3.0.0
  January 10, 2021
 - Include example app

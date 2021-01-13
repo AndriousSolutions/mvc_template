@@ -1,7 +1,6 @@
 ﻿en-CA,en-US,fr,es,de,zh,ru,he
 INTERFACE PREFERENCES, INTERFACE PREFERENCES, PRÉFÉRENCES D'INTERFACE, PREFERENCIAS DE INTERFAZ, SCHNITTSTELLENEINSTELLUNGEN,界面偏好,ПРЕДПОЧТЕНИЯ ИНТЕРФЕЙСА,העדפות ממשק
-Sorted Order of Items,Sorted Order of Items,Ordre trié des articles,Orden clasificado de elementos,Sortierte Reihenfolge der Artikel,项目排序顺序,Отсортированный порядок элементов,
-Check so the items are in descending order with the most recent items listed first,Check so the items are in descending order with the most recent items listed first,Vérifiez que les éléments sont dans l'ordre décroissant avec les éléments les plus récents répertoriés en premier,Verifique que los elementos estén en orden descendente con los elementos más recientes enumerados primero,"Überprüfen Sie, ob die Elemente in absteigender Reihenfolge mit den neuesten zuerst aufgelisteten Elementen sind",检查项目是否降序排列，最新项目列在最前面,"Убедитесь, что элементы расположены в порядке убывания, причем самые свежие элементы отображаются первыми.","בדוק כדי שהפריטים יהיו בסדר יורד, כאשר הפריטים האחרונים רשומים תחילה"
+You have pushed the button this many times:,You have pushed the button this many times:,Vous avez appuyé sur le bouton autant de fois:,Has presionado el botón tantas veces:,Sie haben den Knopf so oft gedrückt:,你已经按了很多次了,Вы нажимали кнопку так много раз,לחצתם על הכפתור פעמים רבות
 Switch around dialogue buttons,Switch around dialog buttons,Changer les boutons de dialogue,Cambiar los botones de diálogo,Dialogschaltflächen umschalten,切换对话按钮,Переключение кнопок диалога,החלף לחצני דיאלוג
 NOTIFICATIONS PREFERENCES,NOTIFICATIONS PREFERENCES,NOTIFICATIONS PRÉFÉRENCES,PREFERENCIAS DE NOTIFICACIONES,MITTEILUNGEN BEITRÄGE,通知首选项,УВЕДОМЛЕНИЯ ПРЕДПОЧТЕНИЯ,העדפות הודעות
 Notification Settings,Notification Settings,Paramètres de notification,Configuración de las notificaciones,Benachrichtigungseinstellungen,通知设置,Настройки уведомлений,הגדרות התראה
@@ -12,13 +11,11 @@ How certain records are further handled,How certain records are further handled,
 My ToDos,My ToDos,Mes ToDos,Mis ToDos,Meine Aufgaben,我的待办事项,Мои задачи,ToDos שלי
 Add,Add,Ajouter,Añadir,Hinzufügen,加,добавлять,לְהוֹסִיף
 UNDO,UNDO,ANNULER,DESHACER,RÜCKGÄNGIG MACHEN,联合国开发计划署,ОТМЕНИТЬ,לבטל
-About ToDo List,About ToDo List,,Acerca de la lista de tareas pendientes,Informationen zur Aufgabenliste,关于待办事项清单,О списке дел,אודות רשימת ToDo
 Resync,Resync,Resynchroniser,Resincronizar,Resync,重新同步,Повторная синхронизация,סנכרן מחדש
 Colour Theme,Color Theme,Thème de couleur,Tema de color,Farbthema,颜色主题,Цветовая тема,ערכת נושא צבעונית
 About,About,Sur,Acerca de,Über,关于,Около,על אודות
 Sign in...,Sign in…,Se connecter…,Registrarse,Anmelden,登入,войти в систему,להתחבר
 Logout,Logout,Se déconnecter,Cerrar sesión,Ausloggen,登出,Выйти,להתנתק
-About ToDo List,About ToDo List,À propos de la liste des tâches,Acerca de la lista de tareas pendientes,Informationen zur Aufgabenliste,关于待办事项清单,О списке дел,אודות רשימת ToDo
 Current Language,Current Language,Langue courante,Idioma actual,Aktuelle Sprache,当前语言,Текущий язык,שפה נוכחית
 Pick another:,Pick another:,Choisissez-en un autre:,Elige otro:,Wählen Sie eine andere:,选择另一个：,Выберите другой:,בחר אחר:
 Current Language:,Current Language:,Langue courante:,Idioma actual:,Aktuelle Sprache:,当前语言:,Текущий язык:,שפה נוכחית:

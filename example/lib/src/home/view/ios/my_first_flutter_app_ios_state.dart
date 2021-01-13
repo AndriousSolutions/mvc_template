@@ -56,6 +56,7 @@ class RandomWordsiOS extends StateMVC<WordPairs> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 CupertinoButton(
+                  key: const Key('listSaved'),
                   onPressed: _pushSaved,
                   child: const Icon(Icons.list),
                 ),
@@ -79,11 +80,6 @@ class RandomWordsiOS extends StateMVC<WordPairs> {
                     onTap: () {
                       model.onTap(i);
                     },
-                    // onTap: () {
-                    //   setState(() {
-                    //     model.onTap(i);
-                    //   });
-                    // },
                   );
                 },
               ),

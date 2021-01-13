@@ -43,13 +43,10 @@ class Controller extends ControllerMVC {
 
   void onPressed() => _model.onPressed();
 
-  // void onPressed() => setState(() {
-  //       _model.onPressed();
-  //     });
-
   // Assign to the 'leading' widget on the interface.
   void leading() => changeUI();
 
+  /// Switch to the other User Interface.
   void changeUI() {
     //
     App.changeUI(App.useMaterial ? 'Cupertino' : 'Material');
@@ -68,5 +65,15 @@ class Controller extends ControllerMVC {
       }
     }
     Prefs.setBool('switchUI', switchUI);
+  }
+
+  /// Indicate if the Words app is to run.
+  bool get wordsApp => Prefs.getBool('words');
+
+  /// Switch to the other application.
+  void changeApp(){
+    final app = Prefs.getBool('words');
+    unawaited(Prefs.setBool('words', !app));
+    App.refresh();
   }
 }

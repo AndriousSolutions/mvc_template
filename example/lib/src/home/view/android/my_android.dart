@@ -45,9 +45,7 @@ class HomePageAndroidState extends StateMVC<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
+            I10n.t('You have pushed the button this many times:'),
             Text(
               con.data,
               style: Theme.of(context).textTheme.headline4,
@@ -56,7 +54,7 @@ class HomePageAndroidState extends StateMVC<HomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-//                onPressed: con.onPressed,
+        key: const Key('IncrementButton'),
         onPressed: () {
           setState(() {
             con.onPressed();

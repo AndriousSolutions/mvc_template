@@ -46,7 +46,7 @@ class PopMenu extends AppPopupMenu<String> {
     bool captureInheritedThemes = false,
   }) {
     _context = context;
-    _this ??= PopMenu._(
+    return _this ??= PopMenu._(
       key,
       items,
       itemBuilder,
@@ -64,7 +64,6 @@ class PopMenu extends AppPopupMenu<String> {
       color,
       captureInheritedThemes,
     );
-    return _this;
   }
 
   PopMenu._(
@@ -109,12 +108,16 @@ class PopMenu extends AppPopupMenu<String> {
   Controller con;
 
   // Supply what the interface
-  String get application => Prefs.getBool('words') ? 'Word Pairs' : 'Counter';
+  String get application => con.wordsApp ? 'Word Pairs' : 'Counter';
 
   String get interface => App.useMaterial ? 'Material' : 'Cupertino';
 
   @override
-  Offset offset = Offset(0, 45);
+  Key key = const Key('appMenuButton');
+
+  @override
+  Offset offset = const Offset(0, 45);
+
   @override
   ShapeBorder shape =
       RoundedRectangleBorder(borderRadius: BorderRadius.circular(16));
@@ -122,28 +125,40 @@ class PopMenu extends AppPopupMenu<String> {
   @override
   List<PopupMenuItem<String>> get menuItems => [
         PopupMenuItem(
-            value: 'interface',
-            child: Text('${I10n.s('Interface:')} $interface')),
+          key: const Key('interfaceMenuItem'),
+          value: 'interface',
+          child: Text('${I10n.s('Interface:')} $interface'),
+        ),
         PopupMenuItem(
-            value: 'application',
-            child: Text('${I10n.s('Application:')} $application')),
+          key: const Key('applicationMenuItem'),
+          value: 'application',
+          child: Text('${I10n.s('Application:')} $application'),
+        ),
         PopupMenuItem(
-            value: 'locale',
-            child: Text('${I10n.s('Locale:')} ${App.locale.toLanguageTag()}')),
-        PopupMenuItem(value: 'color', child: I10n.t('Color Theme')),
-        PopupMenuItem(value: 'about', child: I10n.t('About')),
+          key: const Key('localeMenuItem'),
+          value: 'locale',
+          child: Text('${I10n.s('Locale:')} ${App.locale.toLanguageTag()}'),
+        ),
+        PopupMenuItem(
+          key: const Key('colorMenuItem'),
+          value: 'color',
+          child: I10n.t('Color Theme'),
+        ),
+        PopupMenuItem(
+          key: const Key('aboutMenuItem'),
+          value: 'about',
+          child: I10n.t('About'),
+        ),
       ];
 
   @override
-  void onSelection(String value) async {
+  Future<void> onSelection(String value) async {
     switch (value) {
       case 'interface':
         con.changeUI();
         break;
       case 'application':
-        var app = Prefs.getBool('words');
-        Prefs.setBool('words', !app);
-        App.refresh();
+        con.changeApp();
         break;
       case 'locale':
         final initialItem = I10n.supportedLocales.indexOf(App.locale);
@@ -159,12 +174,14 @@ class PopMenu extends AppPopupMenu<String> {
           press02: () {},
           switchButtons: Settings.getLeftHanded(),
         ).show();
+
+        App.refresh();
         break;
       case 'color':
         // Set the current colour.
         ColorPicker.color = App.themeData.primaryColor;
 
-        ColorPicker.showColorPicker(
+        await ColorPicker.showColorPicker(
             context: _context,
             onColorChange: _onColorChange,
             onChange: _onChange,

@@ -21,7 +21,7 @@
 ///
 
 import 'package:mvc_template/src/view.dart'
-    show AppStatefulWidget, MyView, runApp;
+    show AppState, AppStatefulWidget, MyView, runApp;
 
 /// We use the MVC framework's own runApp with its innate error handling.
 void main() => runApp(
@@ -52,5 +52,5 @@ class MyApp extends AppStatefulWidget {
   /// representing the view that's, in turn, your startup screen.
   /// Your app's not instantiated until all the Error Handling is in place.
   @override
-  createView() => MyView();
+  AppState createView() => MyView();
 }

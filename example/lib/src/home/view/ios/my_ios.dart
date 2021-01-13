@@ -42,7 +42,7 @@ class HomePageiOS extends StateMVC<HomePage> {
         middle: Text(_title ?? widget.title),
         trailing: PopMenu(context).popupMenuButton,
       ),
-      child: _HomeScreen(),
+      child: const _HomeScreen(),
     );
   }
 }
@@ -67,7 +67,7 @@ class _HomeScreenState extends StateMVC<_HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         child: Column(
           children: [
             Expanded(
@@ -84,7 +84,7 @@ class _HomeScreenState extends StateMVC<_HomeScreen> {
                     color: App.themeData.primaryColor,
                   ),
                   child: CupertinoButton(
-                    //  onPressed: con.onPressed,
+                    key: const Key('IncrementButton'),
                     onPressed: () {
                       setState(() {
                         con.onPressed();

@@ -49,7 +49,11 @@ class RandomWordsAndroid extends StateMVC<WordPairs> {
       appBar: AppBar(
         title: Text(_title ?? widget.title),
         actions: [
-          IconButton(icon: const Icon(Icons.list), onPressed: _pushSaved),
+          IconButton(
+            key: const Key('listSaved'),
+            icon: const Icon(Icons.list),
+            onPressed: _pushSaved,
+          ),
           PopMenu(context).popupMenuButton,
         ],
       ),
@@ -66,11 +70,6 @@ class RandomWordsAndroid extends StateMVC<WordPairs> {
                 style: const TextStyle(fontSize: 25),
               ),
               trailing: model.trailing,
-              // onTap: () {
-              //   setState(() {
-              //     model.onTap(i);
-              //   });
-              // },
               onTap: () {
                 model.onTap(i);
               },
