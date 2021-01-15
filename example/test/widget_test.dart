@@ -13,6 +13,10 @@ import 'package:starter_app/src/view.dart';
 
 import 'package:starter_app/src/controller.dart';
 
+/// A flag to ensure any errors are caught when appropriate.
+bool _inError = false;
+String _errorMessage = '';
+
 void main() {
   testWidgets(
     'MVC_Template Tester',
@@ -24,31 +28,48 @@ void main() {
 
       final con = Controller();
 
-      if(App.useCupertino){
-        /// Switch to Material
-        await openInterfaceMenu(tester);
+      try {
+        //
+        if (App.useCupertino) {
+          /// Switch to Material
+          await openInterfaceMenu(tester);
+        }
+//      /// Change the app's color theme
+//      await testColorTheme(tester);
+
+        if (con.wordsApp) {
+          /// Random Word Pairs app
+          await wordsTest(tester);
+        } else {
+          /// Counter app testing
+          await counterTest(tester);
+        }
+      } catch (error) {
+        _catchError(error);
       }
 
-      if (con.wordsApp) {
-        /// Random Word Pairs app
-        await wordsTest(tester);
-      } else {
-        /// Counter app testing
-        await counterTest(tester);
-      }
+      try {
+        /// Switch the application.
+        con.changeApp();
+        await tester.pumpAndSettle();
+        // /// Switch the application.
+        // await openApplicationMenu(tester);
 
-      con.changeApp();
-      await tester.pumpAndSettle();
-
-      if (con.wordsApp) {
-        /// Random Word Pairs app
-        await wordsTest(tester);
-      } else {
-        /// Counter app testing
-        await counterTest(tester);
+        if (con.wordsApp) {
+          /// Random Word Pairs app
+          await wordsTest(tester);
+        } else {
+          /// Counter app testing
+          await counterTest(tester);
+        }
+      } catch (error) {
+        _catchError(error);
       }
 
       await menuTest(tester);
+
+      /// Report any errors.
+      _reportErrors();
     },
   );
 }
@@ -136,9 +157,11 @@ Future<void> wordsTest(WidgetTester tester) async {
 
 ///
 Future<void> menuTest(WidgetTester tester) async {
-
   /// Open the Locale window.
   await openLocaleMenu(tester);
+
+  /// Open Color menu.
+  await openColorMenu(tester);
 
   /// Open About menu.
   await openAboutMenu(tester);
@@ -151,78 +174,133 @@ Future<void> menuTest(WidgetTester tester) async {
 }
 
 /// Open the PopupMenu
-Future<void> openPopupMenu(WidgetTester tester) async {
-  final popup = find.byKey(const Key('appMenuButton'));
-  expect(popup, findsOneWidget);
-  await tester.tap(popup);
-  await tester.pump(const Duration(seconds: 1));
+Future<bool> openPopupMenu(WidgetTester tester) async {
+  bool opened = true;
+  try {
+    final popup = find.byKey(const Key('appMenuButton'));
+    expect(popup, findsOneWidget);
+    await tester.tap(popup);
+    await tester.pump(const Duration(seconds: 1));
+  } catch (error) {
+    opened = false;
+    _catchError(error);
+  }
+  return opened;
 }
 
-Future<void> openInterfaceMenu(WidgetTester tester) async {
+Future<bool> openInterfaceMenu(WidgetTester tester) async {
   /// Open popup menu.
-  await openPopupMenu(tester);
+  bool tested = await openPopupMenu(tester);
+  if (!tested) {
+    return tested;
+  }
 
-  /// Switch the Interface.
-  final interface = find.byKey(const Key('interfaceMenuItem'));
-  expect(interface, findsOneWidget);
-  await tester.tap(interface);
-  await tester.pump(const Duration(seconds: 1));
+  try {
+    /// Switch the Interface.
+    final interface = find.byKey(const Key('interfaceMenuItem'));
+    expect(interface, findsOneWidget);
+    await tester.tap(interface);
+    await tester.pump(const Duration(seconds: 1));
+  } catch (error) {
+    tested = false;
+    _catchError(error);
+  }
+  return tested;
 }
 
-Future<void> openApplicationMenu(WidgetTester tester) async {
+Future<bool> openApplicationMenu(WidgetTester tester) async {
   /// Open popup menu.
-  await openPopupMenu(tester);
+  bool tested = await openPopupMenu(tester);
+  if (!tested) {
+    return tested;
+  }
 
-  /// Switch the application.
-  final application = find.byKey(const Key('applicationMenuItem'));
-  expect(application, findsOneWidget);
-  await tester.tap(application);
-  await tester.pump(const Duration(seconds: 1));
+  try {
+    /// Switch the application.
+    final application = find.byKey(const Key('applicationMenuItem'));
+    expect(application, findsOneWidget);
+    await tester.tap(application);
+    await tester.pump(const Duration(seconds: 1));
+  } catch (error) {
+    tested = false;
+  }
+  return tested;
 }
 
-Future<void> openLocaleMenu(WidgetTester tester) async {
+Future<bool> openLocaleMenu(WidgetTester tester) async {
   /// Open popup menu.
-  await openPopupMenu(tester);
+  bool tested = await openPopupMenu(tester);
+  if (!tested) {
+    return tested;
+  }
 
-  /// Open the Locale window.
-  final locale = find.byKey(const Key('localeMenuItem'));
-  expect(locale, findsOneWidget);
-  await tester.tap(locale);
-  await tester.pump(const Duration(seconds: 1));
+  try {
+    /// Open the Locale window.
+    final locale = find.byKey(const Key('localeMenuItem'));
+    expect(locale, findsOneWidget);
+    await tester.tap(locale);
+    await tester.pump(const Duration(seconds: 1));
 
-  /// Close window.
-  final button = find.widgetWithText(SimpleDialogOption, 'Cancel');
-  expect(button, findsOneWidget);
-  await tester.tap(button);
-  await tester.pump(const Duration(seconds: 1));
+    /// Close window.
+    final button = find.widgetWithText(SimpleDialogOption, 'Cancel');
+    expect(button, findsOneWidget);
+    await tester.tap(button);
+    await tester.pump(const Duration(seconds: 1));
+  } catch (error) {
+    tested = false;
+    _catchError(error);
+  }
+  return tested;
 }
 
-Future<void> openColorMenu(WidgetTester tester) async {
+Future<bool> openColorMenu(WidgetTester tester) async {
   /// Open popup menu.
-  await openPopupMenu(tester);
+  bool tested = await openPopupMenu(tester);
+  if (!tested) {
+    return tested;
+  }
 
-  /// Open the Color window.
-  final color = find.byKey(const Key('colorMenuItem'));
-  expect(color, findsOneWidget);
-  await tester.tap(color);
-  await tester.pump(const Duration(seconds: 1));
+  try {
+    /// Open the Color window.
+    final color = find.byKey(const Key('colorMenuItem'));
+    expect(color, findsOneWidget);
+    await tester.tap(color);
+    await tester.pump(const Duration(seconds: 1));
+
+    ///Close window
+    await tester.tapAt(const Offset(0, 0));
+    await tester.pump(const Duration(seconds: 1));
+  } catch (error) {
+    tested = false;
+    _catchError(error);
+  }
+  return tested;
 }
 
-Future<void> openAboutMenu(WidgetTester tester) async {
+Future<bool> openAboutMenu(WidgetTester tester) async {
   /// Open popup menu.
-  await openPopupMenu(tester);
+  bool tested = await openPopupMenu(tester);
+  if (!tested) {
+    return tested;
+  }
 
-  /// Open the About window.
-  final about = find.byKey(const Key('aboutMenuItem'));
-  expect(about, findsOneWidget);
-  await tester.tap(about);
-  await tester.pump(const Duration(seconds: 1));
+  try {
+    /// Open the About window.
+    final about = find.byKey(const Key('aboutMenuItem'));
+    expect(about, findsOneWidget);
+    await tester.tap(about);
+    await tester.pump(const Duration(seconds: 1));
 
-  /// Close window.
-  final button = find.widgetWithText(TextButton, 'CLOSE');
-  expect(button, findsOneWidget);
-  await tester.tap(button);
-  await tester.pump(const Duration(seconds: 1));
+    /// Close window.
+    final button = find.widgetWithText(TextButton, 'CLOSE');
+    expect(button, findsOneWidget);
+    await tester.tap(button);
+    await tester.pump(const Duration(seconds: 1));
+  } catch (error) {
+    tested = false;
+    _catchError(error);
+  }
+  return tested;
 }
 
 mixin VariantTester<T> on TestVariant<T> {
@@ -235,5 +313,68 @@ mixin VariantTester<T> on TestVariant<T> {
   Future<Object> setUp(T value) async {
     currentValue = value;
     return null;
+  }
+}
+
+void _catchError(Object error) {
+  _inError = true;
+  _errorMessage = '$_errorMessage${error.toString()} \r\n';
+}
+
+/// Throw any collected errors
+void _reportErrors() {
+  if (_inError) {
+    throw Exception(_errorMessage);
+  }
+}
+
+/// Unit Test of the Color Theme mechanism.
+Future<void> testColorTheme(WidgetTester tester) async {
+  // Supply a list of colors to the app.
+  const List<ColorSwatch<int>> fullMaterialColors = [
+    ColorSwatch(0xFFFFFFFF, {500: Colors.white}),
+    ColorSwatch(0xFF000000, {500: Colors.black}),
+    Colors.red,
+    Colors.redAccent,
+    Colors.pink,
+    Colors.pinkAccent,
+    Colors.purple,
+    Colors.purpleAccent,
+    Colors.deepPurple,
+    Colors.deepPurpleAccent,
+    Colors.indigo,
+    Colors.indigoAccent,
+    Colors.blue,
+    Colors.blueAccent,
+    Colors.lightBlue,
+    Colors.lightBlueAccent,
+    Colors.cyan,
+    Colors.cyanAccent,
+    Colors.teal,
+    Colors.tealAccent,
+    Colors.green,
+    Colors.greenAccent,
+    Colors.lightGreen,
+    Colors.lightGreenAccent,
+    Colors.lime,
+    Colors.limeAccent,
+    Colors.yellow,
+    Colors.yellowAccent,
+    Colors.amber,
+    Colors.amberAccent,
+    Colors.orange,
+    Colors.orangeAccent,
+    Colors.deepOrange,
+    Colors.deepOrangeAccent,
+    Colors.brown,
+    Colors.grey,
+    Colors.blueGrey
+  ];
+
+  final con = Controller();
+
+  for (final color in fullMaterialColors) {
+    con.onColorPicker(color);
+    await tester.pump(const Duration(milliseconds: 500));
   }
 }

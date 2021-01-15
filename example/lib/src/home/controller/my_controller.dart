@@ -71,9 +71,42 @@ class Controller extends ControllerMVC {
   bool get wordsApp => Prefs.getBool('words');
 
   /// Switch to the other application.
-  void changeApp(){
+  void changeApp() {
     final app = Prefs.getBool('words');
     unawaited(Prefs.setBool('words', !app));
+    App.refresh();
+  }
+
+
+  /// Working with the ColorPicker to change the app's color theme
+  void onColorPicker([ColorSwatch<int> value]) {
+    //
+    if (value == null) {
+      final swatch = Prefs.getInt('colorTheme', -1);
+      // If never set in the first place, ignore
+      if (swatch > -1) {
+        value = ColorPicker.colors[swatch];
+        ColorPicker.colorSwatch = value;
+      }
+    } else {
+      Prefs.setInt('colorTheme', ColorPicker.colors.indexOf(value));
+    }
+
+    if (value == null) {
+      return;
+    }
+
+    /// Assign the colour to the floating button as well.
+    App.themeData = ThemeData(
+      primaryColor: value,
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: value,
+      ),
+    );
+
+    App.iOSTheme = value;
+
+    // Rebuild the state.
     App.refresh();
   }
 }

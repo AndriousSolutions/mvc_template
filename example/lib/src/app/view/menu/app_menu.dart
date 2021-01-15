@@ -203,37 +203,9 @@ class PopMenu extends AppPopupMenu<String> {
     /// Implement to take in a color change.
   }
 
-  static void _onChange([ColorSwatch<int> value]) {
-    //
-    if (value == null) {
-      final swatch = Prefs.getInt('colorTheme', -1);
-      // If never set in the first place, ignore
-      if (swatch > -1) {
-        value = ColorPicker.colors[swatch];
-        ColorPicker.colorSwatch = value;
-      }
-    } else {
-      Prefs.setInt('colorTheme', ColorPicker.colors.indexOf(value));
-    }
+  /// Of course, the controller is to response to such user events.
+  void _onChange([ColorSwatch<int> value]) => con.onColorPicker(value);
 
-    if (value == null) {
-      return;
-    }
-
-    /// Assign the colour to the floating button as well.
-    App.themeData = ThemeData(
-      primaryColor: value,
-      floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: value,
-      ),
-    );
-
-    App.iOSTheme = value;
-
-    // Rebuild the state.
-    App.refresh();
-  }
-
-  /// Turn to the App's menu to set the App's theme.
-  static void setThemeData() => _onChange();
+  // /// Turn to the App's menu to set the App's theme.
+  // static void setThemeData() => _onChange();
 }

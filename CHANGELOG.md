@@ -1,3 +1,8 @@
+## 3.1.0
+ January 15, 2021
+- Further error handling in example app's test file version 1.2.0
+- con.onColorPicker(value); _catchError(error);  await openColorMenu(tester); 
+
 ## 3.0.0+2
  January 13, 2021
 - Enhanced example app 1.1.0
