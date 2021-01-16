@@ -27,8 +27,8 @@ import 'package:mvc_template/src/controller.dart';
 class Controller extends ControllerMVC {
   /// Optional but a good practice to use a factory constructor for a Controller.
   factory Controller() => _this ??= Controller._();
-  static Controller _this;
   Controller._() : super();
+  static Controller _this;
 
   /// The remaining functions below are all optional.
   /// They hook into the State object associated with this Controller if any.
@@ -48,7 +48,7 @@ class Controller extends ControllerMVC {
   /// Only when the Controller's [State] object is first created.
   ///
   @override
-  void initState() async {}
+  void initState() {}
 
   /// The framework calls this method when the Controller's [State] object will never
   /// build again.Note: THERE IS NO GUARANTEE THIS METHOD WILL RUN in the Framework.
@@ -64,7 +64,7 @@ class Controller extends ControllerMVC {
   @override
   void deactivate() {}
 
-  /// Override this method to respond when the [widget] changes (e.g., to start
+  /// Override this method to respond when the ['widget'] changes (e.g., to start
   /// implicit animations).
   ///
   @override

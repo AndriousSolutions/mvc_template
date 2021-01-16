@@ -105,7 +105,7 @@ class MyView extends AppState {
   /// When a named route is pushed with [Navigator.pushNamed], the route name is
   /// looked up in this map. If the name is present, the associated
   /// [WidgetBuilder] is used to construct a [PageRoute] specified by
-  /// [pageRouteBuilder] to perform an appropriate transition, including [Hero]
+  /// ['pageRouteBuilder'] to perform an appropriate transition, including [Hero]
   /// animations, to the new route.
   ///
   /// {@template flutter.widgets.widgetsApp.routes}
@@ -124,7 +124,7 @@ class MyView extends AppState {
   /// [builder] must not be null.
   /// {@endtemplate}
   ///
-  /// If the routes map is not empty, the [pageRouteBuilder] property must be set
+  /// If the routes map is not empty, the ['pageRouteBuilder'] property must be set
   /// so that the default route handler will know what kind of [PageRoute]s to
   /// build.
   ///
@@ -133,7 +133,7 @@ class MyView extends AppState {
 
   /// The name of the first route to show, if a [Navigator] is built.
   ///
-  /// Defaults to [Window.defaultRouteName], which may be overridden by the code
+  /// Defaults to ['Window.defaultRouteName'], which may be overridden by the code
   /// that launched the application.
   ///
   /// If the route contains slashes, then it is treated as a "deep link", and
@@ -179,7 +179,7 @@ class MyView extends AppState {
   /// {@endtemplate}
   ///
   /// If this property is not set, either the [routes] or [home] properties must
-  /// be set, and the [pageRouteBuilder] must also be set so that the
+  /// be set, and the ['pageRouteBuilder'] must also be set so that the
   /// default handler will know what routes and [PageRoute]s to build.
   ///
   @override
@@ -286,14 +286,14 @@ class MyView extends AppState {
   /// If set to [ThemeMode.system], the choice of which theme to use will
   /// be based on the user's system preferences. If the [MediaQuery.platformBrightnessOf]
   /// is [Brightness.light], [theme] will be used. If it is [Brightness.dark],
-  /// [darkTheme] will be used (unless it is [null], in which case [theme]
+  /// [darkTheme] will be used (unless it is ['null'], in which case [theme]
   /// will be used.
   ///
   /// If set to [ThemeMode.light] the [theme] will always be used,
   /// regardless of the user's system preference.
   ///
   /// If set to [ThemeMode.dark] the [darkTheme] will be used
-  /// regardless of the user's system preference. If [darkTheme] is [null]
+  /// regardless of the user's system preference. If [darkTheme] is ['null']
   /// then it will fallback to using [theme].
   ///
   /// The default value is [ThemeMode.system].
@@ -318,7 +318,9 @@ class MyView extends AppState {
   /// and list the [supportedLocales] that the application can handle.
   ///
   @override
-  Iterable<LocalizationsDelegate<dynamic>> onLocalizationsDelegates() => null;
+  @mustCallSuper
+  Iterable<LocalizationsDelegate<dynamic>> onLocalizationsDelegates() =>
+      super.onLocalizationsDelegates();
 
   /// This callback is responsible for choosing the app's locale
   /// when the app is started, and when the user changes the

@@ -1,3 +1,7 @@
+## 3.1.0+2
+ January 16, 2021
+- Introduced analysis_options.yaml to the code
+
 ## 3.1.0
  January 15, 2021
 - Further error handling in example app's test file version 1.2.0

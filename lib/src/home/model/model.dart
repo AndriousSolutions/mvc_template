@@ -24,8 +24,8 @@ class Model {
   /// Optional but, in most cases, you need only one instance of the Model class.
   ///
   factory Model() => _this ??= Model._();
-  static Model _this;
   Model._();
+  static Model _this;
 
   /// Note, this class extends no other class.
   /// It's to be used as your app's data source, and who knows what that will be.
@@ -42,7 +42,7 @@ class Model {
   void dispose() {}
 
   Future<List<dynamic>> getWhatever() async {
-    var contacts = [];
+    var contacts = <dynamic>[];
     return contacts;
   }
 

@@ -33,7 +33,7 @@ class MyiOS extends StateMVC<MyHome> {
 
   @override
   Future<bool> initAsync() async {
-    super.initAsync();
+    await super.initAsync();
     return true;
   }
 
@@ -43,7 +43,8 @@ class MyiOS extends StateMVC<MyHome> {
   }
 
   /// The View component of this MVC design pattern!
-  Widget build(BuildContext context) => Container(width: 0.0, height: 0.0);
+  @override
+  Widget build(BuildContext context) => Container(width: 0, height: 0);
 
   @override
   void dispose() {

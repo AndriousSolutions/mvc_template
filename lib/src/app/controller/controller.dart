@@ -35,7 +35,7 @@ class AppCon extends AppConMVC {
 
   /// Changing the properties of the App's View object detecting to
   /// use the Material Interface theme
-  void onChangedMaterial(bool material) {
+  void onChangedMaterial({bool material}) {
     App.vw.switchUI = false;
     switchUI = false;
     if (material) {
@@ -51,7 +51,7 @@ class AppCon extends AppConMVC {
 
   /// Changing the properties of the App's View object detecting to
   /// use the Cupertino Interface theme
-  void onChangediOS(bool ios) {
+  void onChangediOS({bool ios}) {
     App.vw.switchUI = false;
     switchUI = false;
     if (ios) {
@@ -74,10 +74,9 @@ class AppCon extends AppConMVC {
 /// the parameter, con.
 class MyAppController extends AppController {
   factory MyAppController() => _this ??= MyAppController._();
-  static MyAppController _this;
-
   /// You can pass the State object
   MyAppController._() : super(null);
+  static MyAppController _this;
 
   @override
   void initApp() {
