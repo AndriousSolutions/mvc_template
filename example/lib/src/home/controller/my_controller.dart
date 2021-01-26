@@ -29,7 +29,7 @@ import 'package:starter_app/src/view.dart';
 import 'package:starter_app/src/controller.dart';
 
 /// extends 'ControllerMVC' so if added to a State object
-/// can 'talk to' the View. (i.e. issue a setState() funciton call)
+/// can 'talk to' the View. (i.e. issue a setState() function call)
 class Controller extends ControllerMVC {
   factory Controller() => _this ??= Controller._();
   Controller._() {
@@ -49,6 +49,8 @@ class Controller extends ControllerMVC {
   /// Switch to the other User Interface.
   void changeUI() {
     //
+    Navigator.popUntil(App.context, ModalRoute.withName('/'));
+
     App.changeUI(App.useMaterial ? 'Cupertino' : 'Material');
     bool switchUI;
     if (App.useMaterial) {
@@ -68,15 +70,58 @@ class Controller extends ControllerMVC {
   }
 
   /// Indicate if the Words app is to run.
-  bool get wordsApp => Prefs.getBool('words');
+  bool get wordsApp => appNames[_appCount] == 'Word Pairs';
 
-  /// Switch to the other application.
-  void changeApp() {
-    final app = Prefs.getBool('words');
-    unawaited(Prefs.setBool('words', !app));
-    App.refresh();
+  /// Indicate if the Counter app is to run.
+  bool get counterApp => appNames[_appCount] == 'Counter';
+
+  /// Indicate if the Contacts app is to run.
+  bool get contactsApp => appNames[_appCount] == 'Contacts';
+
+  int _appCount = 0;
+  final appNames = ['Word Pairs', 'Counter', 'Contacts'];
+
+  Widget onHome() {
+    _appCount = Prefs.getInt('appRun');
+    final Key key = UniqueKey();
+    Widget widget;
+    switch (appNames[_appCount]) {
+      case 'Word Pairs':
+        widget = WordPairs(key: AppState.homeKey);
+        break;
+      case 'Counter':
+        widget = HomePage(key: AppState.homeKey);
+        break;
+      case 'Contacts':
+        widget = ContactsList(key: key);
+        break;
+    }
+    return widget;
   }
 
+  // Supply what the interface
+  String get application => appNames[_appCount];
+
+  /// Switch to the other application.
+  void changeApp([String appName = '']) {
+    if (appName == null ||
+        appName.isEmpty ||
+        !appNames.contains(appName.trim())) {
+      //
+      _appCount++;
+      if (_appCount == appNames.length) {
+        _appCount = 0;
+      }
+    } else {
+      _appCount = appNames.indexOf(appName.trim());
+    }
+
+    unawaited(Prefs.setBool('words', appNames[_appCount] == 'Word'));
+
+    unawaited(Prefs.setInt('appRun', _appCount));
+
+    App.refresh();
+  }
 
   /// Working with the ColorPicker to change the app's color theme
   void onColorPicker([ColorSwatch<int> value]) {

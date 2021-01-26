@@ -2,15 +2,13 @@
 
 A Flutter Project template demonstrating the MVC desing pattern in the 'starter apps,' Counter an WordPair
 
-## Getting Started
+## Example Apps
 
-This project is a starting point for a Flutter application.
+### Counter (Startup App)
 
-A few resources to get you started if this is your first Flutter project:
+### Random Words (Word Pairs App)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### Contacts (SQLite App)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Material or Cupertino Design
+

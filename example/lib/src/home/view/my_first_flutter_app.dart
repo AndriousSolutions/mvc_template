@@ -16,7 +16,7 @@
 ///          Created  01 Jan 2021
 ///
 
-import 'package:starter_app/src/home/model/random_words.dart';
+import 'package:starter_app/src/home/model/words/random_words.dart';
 
 import 'package:starter_app/src/view.dart';
 
@@ -26,7 +26,7 @@ class WordPairs extends StatefulWidget {
     this.title = 'Startup Name Generator',
   })  : model = Model(),
         super(key: key);
-  final model;
+  final Model model;
   final String title;
   @override
   State createState() =>

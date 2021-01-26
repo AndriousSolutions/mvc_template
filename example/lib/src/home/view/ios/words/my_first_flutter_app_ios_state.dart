@@ -22,7 +22,7 @@ import 'package:starter_app/src/home/view/my_first_flutter_app.dart';
 
 import 'package:starter_app/src/controller.dart';
 
-import 'package:starter_app/src/home/model/random_words.dart';
+import 'package:starter_app/src/home/model/words/random_words.dart';
 
 class RandomWordsiOS extends StateMVC<WordPairs> {
   //
@@ -75,7 +75,7 @@ class RandomWordsiOS extends StateMVC<WordPairs> {
                   }
                   model.build(i);
                   return CupertinoListTile(
-                    title: model.title,
+                    title: Text(model.title),
                     trailing: model.trailing,
                     onTap: () {
                       model.onTap(i);
@@ -123,85 +123,5 @@ class RandomWordsiOS extends StateMVC<WordPairs> {
         },
       ),
     );
-  }
-}
-
-/// Cupertino needs a ListTile equivalent
-/// https://github.com/flutter/flutter/issues/50668
-class CupertinoListTile extends StatefulWidget {
-  const CupertinoListTile({
-    Key key,
-    this.leading,
-    this.title,
-    this.subtitle,
-    this.trailing,
-    this.onTap,
-  }) : super(key: key);
-  final Widget leading;
-  final String title;
-  final String subtitle;
-  final Widget trailing;
-  final Function onTap;
-  @override
-  _StatefulStateCupertino createState() => _StatefulStateCupertino();
-}
-
-class _StatefulStateCupertino extends State<CupertinoListTile> {
-  @override
-  Widget build(BuildContext context) {
-    Widget leading;
-    if (widget.leading == null) {
-      leading = const SizedBox();
-    } else {
-      leading = widget.leading;
-    }
-    Widget trailing;
-    if (widget.trailing == null) {
-      trailing = const SizedBox();
-    } else {
-      trailing = widget.trailing;
-    }
-    return GestureDetector(
-      onTap: () {
-        if (widget.onTap != null) {
-          widget.onTap();
-        }
-      },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              leading,
-              const SizedBox(width: 10),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: columnChildren(context),
-              ),
-            ],
-          ),
-          trailing,
-        ],
-      ),
-    );
-  }
-
-  List<Widget> columnChildren(BuildContext context) {
-    final List<Widget> children = []; // was List();
-//    bool isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
-    final bool isDark = Theme.of(context).brightness == Brightness.dark;
-    final Widget title = widget.title != null
-        ? Text(
-            widget.title,
-            style: TextStyle(
-                fontSize: 25, color: isDark ? Colors.white : Colors.black),
-          )
-        : const SizedBox();
-    children.add(title);
-    if (widget.subtitle != null) {
-      children.add(Text(widget.subtitle,
-          style: const TextStyle(color: CupertinoColors.systemGrey)));
-    }
-    return children;
   }
 }

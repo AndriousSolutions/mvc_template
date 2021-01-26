@@ -1,3 +1,7 @@
+## 3.2.0
+ January 25, 2021
+- Commit latest example app changes.
+
 ## 3.1.0+2
  January 16, 2021
 - Introduced analysis_options.yaml to the code

@@ -7,7 +7,7 @@
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:starter_app/src/home/model/random_words.dart';
+import 'package:starter_app/src/home/model/words/random_words.dart';
 
 import 'package:starter_app/src/view.dart';
 
@@ -37,6 +37,11 @@ void main() {
 //      /// Change the app's color theme
 //      await testColorTheme(tester);
 
+        if (!con.wordsApp) {
+          con.changeApp('Word Pairs');
+          await tester.pumpAndSettle();
+        }
+
         if (con.wordsApp) {
           /// Random Word Pairs app
           await wordsTest(tester);
@@ -50,7 +55,7 @@ void main() {
 
       try {
         /// Switch the application.
-        con.changeApp();
+        con.changeApp('Counter');
         await tester.pumpAndSettle();
         // /// Switch the application.
         // await openApplicationMenu(tester);
@@ -168,6 +173,9 @@ Future<void> menuTest(WidgetTester tester) async {
 
   /// Switch the application.
   await openApplicationMenu(tester);
+
+  /// Switch explicitly to Counter app.
+  Controller().changeApp('Counter');
 
   /// Switch the Interface.
   await openInterfaceMenu(tester);

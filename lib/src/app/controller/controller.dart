@@ -74,6 +74,7 @@ class AppCon extends AppConMVC {
 /// the parameter, con.
 class MyAppController extends AppController {
   factory MyAppController() => _this ??= MyAppController._();
+
   /// You can pass the State object
   MyAppController._() : super(null);
   static MyAppController _this;

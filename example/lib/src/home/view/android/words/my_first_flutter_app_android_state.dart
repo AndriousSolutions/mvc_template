@@ -22,7 +22,7 @@ import 'package:starter_app/src/home/view/my_first_flutter_app.dart';
 
 import 'package:starter_app/src/controller.dart';
 
-import 'package:starter_app/src/home/model/random_words.dart';
+import 'package:starter_app/src/home/model/words/random_words.dart';
 
 class RandomWordsAndroid extends StateMVC<WordPairs> {
   //

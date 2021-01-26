@@ -21,7 +21,7 @@
 ///
 
 // Counter app data
-export 'package:starter_app/src/home/model/my_model.dart';
+export 'package:starter_app/src/home/model/counter/my_model.dart';
 
 export 'package:starter_app/src/home/model/settings.dart';
 

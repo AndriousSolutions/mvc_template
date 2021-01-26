@@ -60,7 +60,7 @@ class Model extends ControllerMVC {
         (WordPair pair) {
           Widget widget;
           if (App.useCupertino) {
-            widget = CupertinoListTile(title: pair.asPascalCase);
+            widget = CupertinoListTile(title: Text(pair.asPascalCase));
           } else {
             widget = ListTile(
               title: Text(

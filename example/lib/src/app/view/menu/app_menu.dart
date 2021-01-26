@@ -101,14 +101,14 @@ class PopMenu extends AppPopupMenu<String> {
           color: color,
           captureInheritedThemes: captureInheritedThemes,
         ) {
-    con = Controller();
+    _con = Controller();
   }
   static PopMenu _this;
   static BuildContext _context;
-  Controller con;
+  Controller _con;
 
   // Supply what the interface
-  String get application => con.wordsApp ? 'Word Pairs' : 'Counter';
+  String get application => _con.application;
 
   String get interface => App.useMaterial ? 'Material' : 'Cupertino';
 
@@ -155,10 +155,10 @@ class PopMenu extends AppPopupMenu<String> {
   Future<void> onSelection(String value) async {
     switch (value) {
       case 'interface':
-        con.changeUI();
+        _con.changeUI();
         break;
       case 'application':
-        con.changeApp();
+        _con.changeApp();
         break;
       case 'locale':
         final initialItem = I10n.supportedLocales.indexOf(App.locale);
@@ -204,7 +204,7 @@ class PopMenu extends AppPopupMenu<String> {
   }
 
   /// Of course, the controller is to response to such user events.
-  void _onChange([ColorSwatch<int> value]) => con.onColorPicker(value);
+  void _onChange([ColorSwatch<int> value]) => _con.onColorPicker(value);
 
   // /// Turn to the App's menu to set the App's theme.
   // static void setThemeData() => _onChange();
